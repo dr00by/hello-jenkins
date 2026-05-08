@@ -1,25 +1,25 @@
 pipeline {
     agent any
     stages {
-        stage(Checkout) {
+        stage('Checkout') {
             steps { checkout scm }
         }
-        stage(Build) {
+        stage('Build') {
             steps {
-                echo Building the app...
-                sh python3 --version
+                echo 'Building the app'
+                sh 'python3 --version'
             }
         }
-        stage(Test) {
+        stage('Test') {
             steps {
-                echo Running tests...
-                sh python3 test_app.py
+                echo 'Running tests'
+                sh 'python3 test_app.py'
             }
         }
-        stage(Deploy) {
+        stage('Deploy') {
             steps {
-                echo Deploying...
-                sh python3 app.py
+                echo 'Deploying'
+                sh 'python3 app.py'
             }
         }
     }
